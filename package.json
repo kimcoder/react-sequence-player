@@ -1,0 +1,60 @@
+{
+  "name": "react-sequence-player",
+  "version": "1.0.0",
+  "description": "react component for sequence playing in <div>",
+  "main": "index.js",
+  "scripts": {
+    "type-check": "tsc -p tsconfig.json",
+    "dev": "start-storybook -p 6006",
+    "build": "rollup -c",
+    "build:watch": "rollup -c --watch"
+  },
+  "keywords": [
+    "reactjs",
+    "react",
+    "react-component",
+    "typescript",
+    "react sequence player",
+    "image sequence player",
+    "image sprite"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimcoder/react-sequence-player"
+  },
+  "author": {
+    "name": "kimcoder",
+    "email": "kimcoder@me.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kimcoder/react-sequence-player/issues"
+  },
+  "homepage": "https://github.com/kimcoder/react-sequence-player#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@babel/preset-react": "^7.8.0",
+    "@babel/preset-typescript": "^7.8.0",
+    "@storybook/addon-info": "^5.3.1",
+    "@storybook/addon-links": "^5.3.1",
+    "@storybook/addons": "^5.3.1",
+    "@storybook/preset-typescript": "^1.2.0",
+    "@storybook/react": "^5.3.1",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "style-loader": "^1.1.2",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "tslint-config-standard": "^9.0.0",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {}
+}
