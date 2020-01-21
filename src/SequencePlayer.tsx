@@ -5,7 +5,7 @@ export type SPPosition = { x: number; y: number; };
 
 type Props = {
   /**
-   * Text to display with storybook component
+   * Image source
    */
   image: any;
   data: Array<SPPosition>;
@@ -45,13 +45,16 @@ const SequencePlayer = (props: Props, ref: any) => {
     update();
   };
 
-  const reverse = (idx: number = props.data.length - 1) => {
-    props.logging && console.log('[SequencePlayer reverse]', idx);
-    props.onStart && props.onStart();
-    setIndex(idx);
-    setIsPlaying(true);
-    setIsReverse(true);
-    update();
+  const reverse = () => {
+    props.logging && console.log('[SequencePlayer reverse]');
+    if (index > 0) {
+      props.onStart && props.onStart();
+      setIsPlaying(true);
+      setIsReverse(true);
+      update();
+    } else {
+      props.logging && console.log('[SequencePlayer reverse] can not reverse, because idx is 0', index);
+    }
   };
 
   const pause = (idx?: number) => {
@@ -71,10 +74,13 @@ const SequencePlayer = (props: Props, ref: any) => {
   const update = () => {
     if (!isPlaying) return;
     props.logging && console.log(`[SequencePlayer update] isReverse:${isReverse} ${index}/${props.data.length - 1}`);
-    if (!isReverse && props.data.length === index + 1) {
+    const isFirst: boolean = index === 0;
+    const isLast: boolean = props.data.length === index + 1;
+
+    if (!isReverse && isLast) {
       setIsPlaying(false);
       props.onComplete && props.onComplete();
-    } else if (isReverse && index === 0) {
+    } else if (isReverse && isFirst) {
       setIsPlaying(false);
       props.onComplete && props.onComplete();
     } else if (isReverse && index > 1) {
@@ -92,6 +98,13 @@ const SequencePlayer = (props: Props, ref: any) => {
   React.useEffect(() => {
     isPlaying && update();
   }, [isPlaying]);
+
+  React.useEffect(() => {
+    // window.addEventListener("mousemove", logMousePosition);
+    return () => {
+      // window.removeEventListener("mousemove", logMousePosition);
+    };
+  }, []);
 
   const overrideStyle: React.CSSProperties = {
     ...props.style,
