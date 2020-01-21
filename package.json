@@ -1,6 +1,6 @@
 {
   "name": "react-sequence-player",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "react component for sequence playing in <div>",
   "main": "dist/index.js",
   "scripts": {
