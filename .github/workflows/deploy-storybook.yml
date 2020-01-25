@@ -3,7 +3,7 @@ name: Deployment CI
 on:
   push:
     branches:
-      - feature/gh-pages
+      - master
 jobs:
   build:
 
