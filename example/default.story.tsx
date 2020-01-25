@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import SequencePlayer from '../SequencePlayer';
+import SequencePlayer from '../src/SequencePlayer';
 import SampleImage from './sample.png';
 
 storiesOf('SequencePlayer', module)
