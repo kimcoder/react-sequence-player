@@ -1,0 +1,12 @@
+.DS_Store
+.vscode
+# .git*
+
+example
+node_modules
+dist
+storybook-static
+
+npm-debug.log
+yarn-debug.log
+yarn-error.log
