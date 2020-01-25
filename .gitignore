@@ -2,7 +2,6 @@
 .vscode
 # .git*
 
-example
 node_modules
 dist
 storybook-static
