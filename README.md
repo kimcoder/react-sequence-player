@@ -10,6 +10,7 @@
 [download-image]: http://img.shields.io/npm/dm/react-sequence-player.svg?style=flat
 [download-url]: http://www.npmjs.com/package/react-sequence-player
 
+- <a href="https://kimcoder.github.io/react-sequence-player/?path=/story/sequenceplayer--default">Live Demo</a>
 - Image Sequence Player for ReactJS.
 - Selectable Navgation Styles.
 - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS" target="_blank">What is Image Sprite?</a><br><br>
