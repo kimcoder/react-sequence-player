@@ -8,7 +8,7 @@
     "dev": "start-storybook -p 6006",
     "build": "rm -rf dist && rollup -c",
     "build:watch": "rollup -c --watch",
-    "build:storybook": "build-storybook"
+    "build:storybook": "build-storybook --quiet"
   },
   "keywords": [
     "reactjs",

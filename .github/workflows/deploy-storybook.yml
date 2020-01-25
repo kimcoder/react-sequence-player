@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-
 jobs:
   build:
 
@@ -23,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: npm install packages
-        run: npm i
+        run: npm install
 
       - name: build storybook
         run: npm run build:storybook
@@ -31,6 +30,6 @@ jobs:
       - name: deploy storybook
         uses: peaceiris/actions-gh-pages@v2.5.0
         env:
-          PERSONAL_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./storybook-static
