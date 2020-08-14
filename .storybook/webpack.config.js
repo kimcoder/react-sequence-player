@@ -8,7 +8,7 @@ module.exports = {
         test: /\.tsx?$/,
         include: path.resolve(__dirname, "../"),
         use: [
-          require.resolve("ts-loader")
+          require.resolve("babel-loader")
         ]
       },
       {
