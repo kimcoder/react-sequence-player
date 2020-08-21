@@ -45,6 +45,7 @@ storiesOf('SequencePlayer', module)
           imageSize={{ width: 918, height: 506 }}
           ref={playerRef}
           delay={200}
+          logging={true}
         />
       </div>
     );

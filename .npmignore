@@ -2,6 +2,8 @@
 .vscode
 .git*
 .storybook
+.babelrc
+.gitignore
 
 example
 node_modules

@@ -1,11 +1,12 @@
 {
   "name": "react-sequence-player",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "react component for sequence playing in <div>",
   "main": "dist/index.js",
   "scripts": {
     "type-check": "tsc -p tsconfig.json",
     "dev": "start-storybook -p 6006",
+    "prebuild": "npm run type-check",
     "build": "rm -rf dist && rollup -c",
     "build:watch": "rollup -c --watch",
     "build:storybook": "build-storybook --quiet"
