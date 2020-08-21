@@ -4,9 +4,9 @@
 [![Download Count][download-image]][download-url]
 
 [react-url]: https://reactjs.org
-[react-image]: https://img.shields.io/badge/React-%5E16.9.0-blue
+[react-image]: https://img.shields.io/badge/React-16.13.1-blue
 [typescript-url]: https://www.typescriptlang.org
-[typescript-image]: https://img.shields.io/badge/Typescript-%5E3.7.0-brightgreen
+[typescript-image]: https://img.shields.io/badge/Typescript-3.9.7-orange
 [download-image]: http://img.shields.io/npm/dm/react-sequence-player.svg?style=flat
 [download-url]: http://www.npmjs.com/package/react-sequence-player
 

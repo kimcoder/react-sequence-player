@@ -99,13 +99,6 @@ const SequencePlayer = (props: Props, ref: any) => {
     isPlaying && update();
   }, [isPlaying]);
 
-  React.useEffect(() => {
-    // window.addEventListener("mousemove", logMousePosition);
-    return () => {
-      // window.removeEventListener("mousemove", logMousePosition);
-    };
-  }, []);
-
   const overrideStyle: React.CSSProperties = {
     ...props.style,
     backgroundRepeat: 'no-repeat',
