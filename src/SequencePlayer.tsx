@@ -36,42 +36,44 @@ const SequencePlayer = (props: Props, ref: any) => {
   const [isReverse, setIsReverse] = React.useState(false);
   const getSize = (size: number) => props.forMobile ? Math.round(size / 2) : size;
 
-  const play = (idx: number = 0) => {
-    props.logging && console.log('[SequencePlayer play]');
+  const play = React.useCallback((idx: number = 0) => {
+    if (isPlaying) return;
+    props.logging && console.log('[SequencePlayer play]', isPlaying);
     props.onStart && props.onStart();
     setIndex(idx);
     setIsPlaying(true);
     setIsReverse(false);
-    update();
-  };
+  }, [isPlaying]);
 
-  const reverse = () => {
-    props.logging && console.log('[SequencePlayer reverse]');
-    if (index > 0) {
+  const reverse = React.useCallback(() => {
+    if (isReverse) return;
+    props.logging && console.log('[SequencePlayer reverse]', index);
+    if (index > 0 && !isReverse) {
       props.onStart && props.onStart();
-      setIsPlaying(true);
       setIsReverse(true);
-      update();
+      setIsPlaying(true);
     } else {
-      props.logging && console.log('[SequencePlayer reverse] can not reverse, because idx is 0', index);
+      props.logging && console.log('[SequencePlayer reverse] can not reverse, because idx is 0 or currently is reversing', index);
     }
-  };
+  }, [index]);
 
-  const pause = (idx?: number) => {
+  const pause = React.useCallback((idx?: number) => {
+    if (!isPlaying) return;
     props.logging && console.log('[SequencePlayer pause]');
     if (idx) {
       setIndex(idx);
     }
     setIsPlaying(false);
     props.onPaused && props.onPaused();
-  };
+  }, [isPlaying]);
 
-  const resume = () => {
+  const resume = React.useCallback(() => {
+    if (isPlaying) return;
     props.logging && console.log('[SequencePlayer resume]');
-    isPlaying ? pause() : play(index);
-  };
-
-  const update = () => {
+    play(index);
+  }, [index, isPlaying]);
+  
+  const update = React.useCallback(() => {
     if (!isPlaying) return;
     props.logging && console.log(`[SequencePlayer update] isReverse:${isReverse} ${index}/${props.data.length - 1}`);
     const isFirst: boolean = index === 0;
@@ -83,28 +85,21 @@ const SequencePlayer = (props: Props, ref: any) => {
     } else if (isReverse && isFirst) {
       setIsPlaying(false);
       props.onComplete && props.onComplete();
-    } else if (isReverse && index > 1) {
+    } else if (isReverse && index > 0) {
       setIndex(index - 1);
     } else if (!isReverse && props.data.length > index + 1) {
       setIndex(index + 1);
     }
-  };
+  }, [index, isPlaying, isReverse]);
 
   React.useImperativeHandle(ref, () => ({ play, resume, pause, reverse }));
   React.useEffect(() => {
-    setTimeout(update, props.delay || 50);
+    isPlaying && setTimeout(update, props.delay || 50);
   }, [index]);
 
   React.useEffect(() => {
     isPlaying && update();
   }, [isPlaying]);
-
-  React.useEffect(() => {
-    // window.addEventListener("mousemove", logMousePosition);
-    return () => {
-      // window.removeEventListener("mousemove", logMousePosition);
-    };
-  }, []);
 
   const overrideStyle: React.CSSProperties = {
     ...props.style,

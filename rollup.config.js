@@ -7,7 +7,7 @@ const config = {
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'esm'
     },
   ],
   external: [
