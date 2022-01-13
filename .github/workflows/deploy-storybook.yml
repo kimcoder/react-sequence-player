@@ -6,12 +6,11 @@ on:
       - master
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@master
@@ -27,9 +26,9 @@ jobs:
       - name: build storybook
         run: npm run build:storybook
 
-      - name: deploy storybook
-        uses: peaceiris/actions-gh-pages@v2.5.0
+      - name: deploy to S3
         env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./storybook-static
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        run: aws s3 cp ./storybook-static s3://$S3_BUCKET --acl public-read --recursive --region ap-northeast-2
